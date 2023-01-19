@@ -61,7 +61,7 @@ console.log(router.query)
             </tr>
             </thead>
             <tbody>
-                {products?.map((value)=>(<tr>
+                {products?.map((value)=>(<tr key={value.id}>
                     <td>
                         {value.title}
                     </td>
