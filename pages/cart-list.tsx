@@ -20,6 +20,7 @@ function CartListPage() {
             <th>Total</th>
             <th>Total Product</th>
             <th>Total Quantity</th>
+            <th>Link</th>
           </tr>
         </thead>
         <tbody>
@@ -29,6 +30,9 @@ function CartListPage() {
               <td>{value.total}</td>
               <td>{value.totalProducts}</td>
               <td>{value.totalQuantity}</td>
+              <td>
+                <a href={"/cart/" + value.id}>Lihat</a>
+              </td>
             </tr>
           ))}
         </tbody>

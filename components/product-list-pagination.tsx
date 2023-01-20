@@ -30,7 +30,7 @@ export function ProductListPagination() {
             href: "/product-list",
             query: {
               search: router.query.search,
-              page: Number(router.query.page) + 1,
+              page: (Number(router.query.page) ?? 1) + 1,
             },
           });
         }}

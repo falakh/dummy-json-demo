@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useProductListStore } from "../store/product-list";
 import { useRouter } from "next/router";
+import { ProductListPagination } from "../components/product-list-pagination";
 
 function ProductListPage() {
   const router = useRouter();
@@ -9,7 +10,6 @@ function ProductListPage() {
   const products = useProductListStore((state) => state.products);
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
-    console.log(router.query);
     if (router.query.search) {
       requestProductList({
         page: router.query.page ? Number(router.query.page as string) : 1,
@@ -37,7 +37,7 @@ function ProductListPage() {
             });
           }}
         >
-          <input name="query" ref={inputRef} type={"text"} className="border border-black" />
+          <input ref={inputRef} type={"text"} className="border border-black" />
         </form>
       </div>
       <table className="table-auto   border border-slate-400">
@@ -59,7 +59,7 @@ function ProductListPage() {
           ))}
         </tbody>
       </table>
-      <ProductListPage />
+      <ProductListPagination />
     </div>
   );
 }
