@@ -1,9 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useCartListStore } from "../store/cart-list";
 import { CartListPagination } from "../components/cart-list-pagination";
 import { useRouter } from "next/router";
 
-function ProductListPage() {
+function CartListPage() {
   const requestCartList = useCartListStore((state) => state.requestCart);
   const products = useCartListStore((state) => state.products);
   const router = useRouter();
@@ -38,4 +38,4 @@ function ProductListPage() {
   );
 }
 
-export default ProductListPage;
+export default CartListPage;

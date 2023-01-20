@@ -1,8 +1,16 @@
+import { useState, useEffect } from "react";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  //Wait till NextJS rehydration completes
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
+  return isHydrated ? (
     <div className="flex md:flex-row flex-col ">
       <div className="space-x-5 py-4  md:flex w-full md:h-full md:min-h-screen  flex-col md:w-1/6 bg-gray-200 pt-20 md:space-y-4 px-5">
         <a href="/product-list" className="cursor-pointer">
@@ -16,6 +24,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </div>
     </div>
+  ) : (
+    <div>Loading....</div>
   );
 }
 
